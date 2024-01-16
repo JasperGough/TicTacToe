@@ -17,11 +17,23 @@ public class State
     public void setGameState(int gameState) {
         this.gameState = gameState;
     }
-    public String getYName() {
+    public String getOName() {
         return this.oName;
     }
-    public void setXname(String oName) {
+    public void setOname(String oName) {
         this.oName = oName;
+    }
+    public String getXName() {
+        return this.xName;
+    }
+    public void setXname(String xName) {
+        this.xName = xName;
+    }
+    public int getWhoseMove() {
+        return this.whoseMove;
+    }
+    public void setWhoseMove(int whoseMove) {
+        this.whoseMove = whoseMove;
     }
 }
 
