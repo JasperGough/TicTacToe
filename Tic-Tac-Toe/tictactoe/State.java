@@ -36,13 +36,47 @@ public class State
         this.whoseMove = whoseMove;
     }
     public int getBoardCell(int row, int col) {
-	    return this.board[row][col];
+        return this.board[row][col];
     }
     public void setBoardCell(int row, int col, int value) {
-	    this.board[row][col] = value;
+        this.board[row][col] = value;
     }
     public boolean isWinner() {
-        
+        boolean isWinner = false;
+        int gridTally;
+        for (int i = 0; i <= 2; i++) {
+            gridTally = 0;
+            for (int j = 0; j <= 2; j++) {
+                gridTally += board[i][j];
+            }
+            if (gridTally == 3 || gridTally == -3) {
+                isWinner = true;
+            }
+        }
+        for (int i = 0; i <= 2; i++) {
+            gridTally = 0;
+            for (int j = 0; j <= 2; j++) {
+                gridTally += board[j][i];
+            }
+            if (gridTally == 3 || gridTally == -3) {
+                isWinner = true;
+            }
+        }
+        for (int i = 0; i <= 2; i++) {
+            gridTally = 0;
+            gridTally += board[i][i];
+            if (gridTally == 3 || gridTally == -3) {
+                isWinner = true;
+            }
+        }
+        for (int i = 0; i <= 2; i++) {
+            gridTally = 0;
+            gridTally += board[i][-i+2];
+            if (gridTally == 3 || gridTally == -3) {
+                isWinner = true;
+            }
+        }
+        return isWinner;
     }
     
 }
