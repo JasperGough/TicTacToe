@@ -44,9 +44,6 @@ public class State
     public boolean isWinner() {
         boolean isWinner = false;
         int gridTally;
-        if (IntStream.of(board).sum() != 0) {
-            
-        }
         for (int i = 0; i <= 2; i++) {
             gridTally = 0;
             for (int j = 0; j <= 2; j++) {
@@ -81,6 +78,15 @@ public class State
         }
         return isWinner;
     }
-    public boolean isTie
+    public boolean isTie() {
+        for (int row=0; row<Constants.BOARD_SIZE; row++) {
+            for (int col=0; col<Constants.BOARD_SIZE; col++) {
+                if (getBoardCell(row,col) == Constants.BLANK) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
 
