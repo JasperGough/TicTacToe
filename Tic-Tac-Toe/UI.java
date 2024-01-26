@@ -1,3 +1,4 @@
+import java.util.Scanner;
  
 
 /**
@@ -21,20 +22,20 @@ public String getPlayerName(int whoseMove, String xName, String yName) {
   return (whoseMove == -1) ? xName : yName;
 }
 
-public boolean isLegalMove(int state, int row, int col) {
+public boolean isLegalMove(State state, int row, int col) {
   return 1 <= row && row <= Constants.BOARD_SIZE &&
     1 <= col && col <= Constants.BOARD_SIZE &&
     state.getBoardCell(row, col) == Constants.BLANK;
 }
 
 // Prompt for input methods
-public String promptForName(int player) {
+public String promptForName(String player) {
     System.out.printf(Constants.GET_PLAYER_NAME, player);
     return scanner.next();
 }
 
 public int getMoveRow(int whoseMove, String xName, String oName) {
-    int row;
+    int row = 0;
     while (row <= 0 || row >= 4) {
         try {
             System.out.printf(Constants.GET_ROW_MOVE, getXOrO(whoseMove), getPlayerName(whoseMove, xName, oName));
@@ -47,7 +48,7 @@ public int getMoveRow(int whoseMove, String xName, String oName) {
 }
 
 public int getMoveCol(int whoseMove, String xName, String oName) {
-    int col;
+    int col = 0;
     while (col <= 0 || col >= 4) {
         try {
             System.out.printf(Constants.GET_COL_MOVE, getXOrO(whoseMove), getPlayerName(whoseMove, xName, oName));
@@ -87,11 +88,14 @@ public void printInvalidMove(int row, int col) {
 }
 
 public void printMove(State state, int row, int col) {
-    System.out.printf(Constants.PRINT_MOVE, getXOrO(state.getWhoseMove(), getPlayerName(state.whoseMove), row, col));
+    System.out.printf(Constants.PRINT_MOVE, getXOrO(state.getWhoseMove()), getPlayerName(state.getWhoseMove(), state.getXName(), state.getOName()), row, col);
 } 
 
 public void printWinner(State state) {
-    System.out.printf(Constants.WINNER, getXOrO(state.getWhoseMove()), state.getPlayerName(state.whoseMove));
+    System.out.printf(
+    Constants.WINNER, 
+    getXOrO(state.getWhoseMove()), 
+    getPlayerName(state.getWhoseMove(), state.getXName(), state.getOName()));
 }
 
 public void printTieGame() {
