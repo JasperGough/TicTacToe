@@ -96,6 +96,7 @@ public void printBoard(State state) {
 
 public void printInvalidRowOrColumn() {
     System.out.printf(Constants.INVALID_ROW_OR_COLUMN);
+    System.out.println();
 }
 
 public void printInvalidMove(int row, int col) {
